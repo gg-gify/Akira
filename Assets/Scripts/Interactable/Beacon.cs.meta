@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a887bfe18dbef9d49a0c014c90063aa3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - beaconPointerMaterial: {fileID: 2100000, guid: 0247da7a62f13c342b78c41ee16da320,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
