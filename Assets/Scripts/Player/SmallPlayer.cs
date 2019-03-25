@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SmallPlayer : PlayerController
 {
+    [SerializeField] private Transform hammerLightPivot;
+
     private LightSource holdingLight;
 
     public override void BButtonPressed()
@@ -23,7 +25,7 @@ public class SmallPlayer : PlayerController
         this.holdingLight = holdingLight;
         if (holdingLight != null)
         {
-            holdingLight.SetTarget(transform);
+            holdingLight.SetTarget(hammerLightPivot);
         }
     }
 }

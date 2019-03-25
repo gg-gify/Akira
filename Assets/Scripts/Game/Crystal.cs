@@ -6,7 +6,8 @@ public class Crystal : MonoBehaviour
 {
     private const float MAX_CRYSTAL_BATTERY = .4f;
 
-    [SerializeField] Light crystalLight;
+    [SerializeField] private Light crystalLight;
+    [SerializeField] private MeshRenderer crystalRenderer;
 
     private bool isRecivingLight;
     private float currentBatteryStatus;
@@ -27,11 +28,13 @@ public class Crystal : MonoBehaviour
         }
     }
 
-    public void ReciveLight()
+    public void ReciveLight(Color color)
     {
         isRecivingLight = true;
         currentBatteryStatus = MAX_CRYSTAL_BATTERY;
         crystalLight.enabled = true;
+        crystalRenderer.material.color = color;
+        crystalLight.color = color;
     }
 
     public bool IsRecivingLight()

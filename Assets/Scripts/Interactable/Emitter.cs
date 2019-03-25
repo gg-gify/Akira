@@ -76,7 +76,7 @@ public abstract class Emitter : Interactable
                 {
                     if (Vector3.Distance(startRayPosition, rayEndPoint) > Vector3.Distance(startRayPosition, possibleLightCrystal[i].transform.position))
                     {
-                        possibleLightCrystal[i].ReciveLight();
+                        possibleLightCrystal[i].ReciveLight(rayColor);
                     }
                 }
 

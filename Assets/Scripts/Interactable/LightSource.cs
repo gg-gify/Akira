@@ -2,6 +2,7 @@
 using UnityEditor;
 using System;
 
+[RequireComponent(typeof(Light))]
 [RequireComponent(typeof(ParticleSystem))]
 public class LightSource : Interactable
 {
@@ -10,16 +11,19 @@ public class LightSource : Interactable
     private Vector3 startPosition;
     private Transform target;
     private ParticleSystem lightParticles;
+    private Light unityLight;
 
     private void Start()
     {
         startPosition = transform.position;
         lightParticles = GetComponent<ParticleSystem>();
+        GetComponent<ParticleSystemRenderer>().material.color = GetColor();
+        unityLight = GetComponent<Light>();
+        unityLight.color = GetColor();
     }
 
     protected override void Update()
     {
-        GetComponent<ParticleSystemRenderer>().material.color = GetColor();
         if (target != null)
         {
             transform.position = target.position;
@@ -50,13 +54,7 @@ public class LightSource : Interactable
         if (player is SmallPlayer)
         {
             SmallPlayer currentPlayer = (SmallPlayer)player;
-            if (currentPlayer.GetHoldingLight() != null)
-            {
-                currentPlayer.GetHoldingLight().SetTarget(null);
-                currentPlayer.SetHoldingLight(null);
-            }
             currentPlayer.SetHoldingLight(this);
-            SetTarget(currentPlayer.transform);
             currentPlayer.SetInteraction(null);
         }
     }

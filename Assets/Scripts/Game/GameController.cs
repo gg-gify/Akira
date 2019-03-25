@@ -9,18 +9,19 @@ public class GameController : MonoBehaviour
     public const int SCORE_DECAY_PER_SECOND = 2;
     public const float PORTAL_TEXT_FLASH_TIME = 0.4f;
 
-    [SerializeField] private Crystal[] crystals;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text remainingCrystalsText;
     [SerializeField] private Text currentCrystalsText;
     [SerializeField] private Text portalOpennedText;
 
+    private Crystal[] crystals;
     private float currentScore = 0;
     private bool isPostalTextAnimating;
 
     private void Start()
     {
         currentScore = BEGIN_SCORE;
+        crystals = FindObjectsOfType<Crystal>();
     }
 
     private void Update()
