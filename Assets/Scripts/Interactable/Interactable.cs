@@ -46,7 +46,6 @@ public abstract class Interactable : MonoBehaviour
     }
 
     public abstract void AButtonPressed(PlayerController player);
-    public abstract void BButtonPressed(PlayerController player);
     
     protected virtual void OnDrawGizmosSelected()
     {

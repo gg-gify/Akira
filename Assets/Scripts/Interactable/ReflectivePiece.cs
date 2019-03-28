@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class ReflectivePiece : Emitter
 {
-    public override void AButtonPressed(PlayerController player)
+    [SerializeField] private float angleStep = 5;
+
+    protected override void Start()
     {
-        
+        base.Start();
+        int randomAngleMultiplyer = Random.Range(0, 72);
+        SetRayCastAngle(randomAngleMultiplyer * 5 * Time.deltaTime);
     }
 
-    public override void BButtonPressed(PlayerController player)
+    public override void AButtonPressed(PlayerController player)
     {
-        
+        SetRayCastAngle(GetRayCastAngle() - angleStep);
     }
 }

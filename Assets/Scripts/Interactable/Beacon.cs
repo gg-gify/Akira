@@ -6,10 +6,13 @@ public class Beacon : Emitter
 {
     private const float MAX_BEACON_BATTERY = 6f;
 
+    [SerializeField] private float beaconInteractionCooldown = 1f;
     [SerializeField] private float maxLineWidth = 0.2f;
 
     private LightSource currentLight;
     private float currentBatteryStatus;
+    private bool isOnCooldown;
+    private float currentCooldownTime;
 
     protected override void Update()
     {
@@ -25,6 +28,14 @@ public class Beacon : Emitter
             }
             currentLineWidth = maxLineWidth * (currentBatteryStatus / MAX_BEACON_BATTERY);
         }
+        if (isOnCooldown)
+        {
+            currentCooldownTime -= Time.deltaTime;
+            if (currentCooldownTime <= 0)
+            {
+                isOnCooldown = false;
+            }
+        }
     }
 
     public void SetCurrentLight(LightSource currentLight)
@@ -38,32 +49,29 @@ public class Beacon : Emitter
 
     public override void AButtonPressed(PlayerController player)
     {
-        if (player is SmallPlayer)
+        if (isOnCooldown) return;
+        if (player.GetHoldingLight() != null)
         {
-            SmallPlayer currentPlayer = (SmallPlayer)player;
-            if (currentPlayer.GetHoldingLight() != null)
-            {
-                LightSource tmp = currentLight;
-                SetCurrentLight(currentPlayer.GetHoldingLight());
-                currentPlayer.SetHoldingLight(tmp);
-            }
-            else if (currentLight != null)
-            {
-                currentPlayer.SetHoldingLight(currentLight);
-                SetCurrentLight(null);
-            }
-
-            if (currentLight != null)
-            {
-                EmitLight(currentLight.GetColor(), maxLineWidth);
-                currentBatteryStatus = MAX_BEACON_BATTERY;
-            }
-            else
-            {
-                ShutdownLight();
-            }
+            LightSource tmp = currentLight;
+            SetCurrentLight(player.GetHoldingLight());
+            player.SetHoldingLight(tmp);
         }
-    }
+        else if (currentLight != null)
+        {
+            player.SetHoldingLight(currentLight);
+            SetCurrentLight(null);
+        }
 
-    public override void BButtonPressed(PlayerController player) { }
+        if (currentLight != null)
+        {
+            EmitLight(currentLight.GetColor(), maxLineWidth);
+            currentBatteryStatus = MAX_BEACON_BATTERY;
+        }
+        else
+        {
+            ShutdownLight();
+        }
+        isOnCooldown = true;
+        currentCooldownTime = beaconInteractionCooldown;
+    }
 }

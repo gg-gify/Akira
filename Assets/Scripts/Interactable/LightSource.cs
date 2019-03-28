@@ -44,32 +44,19 @@ public class LightSource : Interactable
         }
     }
 
+    public override void AButtonPressed(PlayerController player)
+    {
+        if (player.GetHoldingLight() != null)
+        {
+            player.SetHoldingLight(null);
+        }
+        player.SetHoldingLight(this);
+        player.SetInteraction(null);
+    }
+
     public Color GetColor()
     {
         return LightSourceColorConverter.GetColor(color);
-    }
-
-    public override void AButtonPressed(PlayerController player)
-    {
-        if (player is SmallPlayer)
-        {
-            SmallPlayer currentPlayer = (SmallPlayer)player;
-            currentPlayer.SetHoldingLight(this);
-            currentPlayer.SetInteraction(null);
-        }
-    }
-
-    public override void BButtonPressed(PlayerController player)
-    {
-        if (player is SmallPlayer)
-        {
-            SmallPlayer currentPlayer = (SmallPlayer)player;
-            if (currentPlayer.GetHoldingLight() != null)
-            {
-                currentPlayer.GetHoldingLight().SetTarget(null);
-                currentPlayer.SetHoldingLight(null);
-            }
-        }
     }
 
     public void SetTarget(Transform target)

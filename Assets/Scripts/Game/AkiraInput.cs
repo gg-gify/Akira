@@ -42,10 +42,10 @@ public static class AkiraInput
                 rightKey = Input.GetAxisRaw(HORIZONTAL_PAD_JOYSTICK_2) > 0;
                 break;
             case AkiraInputModel.Keyboard:
-                upKey = Input.GetKeyDown(KEYBOARD_UP_BUTTON);
-                leftKey = Input.GetKeyDown(KEYBOARD_LEFT_BUTTON);
-                downKey = Input.GetKeyDown(KEYBOARD_DOWN_BUTTON);
-                rightKey = Input.GetKeyDown(KEYBOARD_RIGHT_BUTTON);
+                upKey = Input.GetKey(KEYBOARD_UP_BUTTON);
+                leftKey = Input.GetKey(KEYBOARD_LEFT_BUTTON);
+                downKey = Input.GetKey(KEYBOARD_DOWN_BUTTON);
+                rightKey = Input.GetKey(KEYBOARD_RIGHT_BUTTON);
                 break;
         }
         Vector2 pad = Vector2.zero;
@@ -62,13 +62,13 @@ public static class AkiraInput
         switch (model)
         {
             case AkiraInputModel.Joystick1:
-                button = Input.GetKeyDown(JOYSTCIK_1_A_BUTTON);
+                button = Input.GetKey(JOYSTCIK_1_A_BUTTON);
                 break;
             case AkiraInputModel.Joystick2:
-                button = Input.GetKeyDown(JOYSTCIK_2_A_BUTTON);
+                button = Input.GetKey(JOYSTCIK_2_A_BUTTON);
                 break;
             case AkiraInputModel.Keyboard:
-                button = Input.GetKeyDown(KEYBOARD_A_BUTTON);
+                button = Input.GetKey(KEYBOARD_A_BUTTON);
                 break;
         }
         return button;
@@ -80,13 +80,13 @@ public static class AkiraInput
         switch (model)
         {
             case AkiraInputModel.Joystick1:
-                button = Input.GetKeyDown(JOYSTCIK_1_B_BUTTON);
+                button = Input.GetKey(JOYSTCIK_1_B_BUTTON);
                 break;
             case AkiraInputModel.Joystick2:
-                button = Input.GetKeyDown(JOYSTCIK_2_B_BUTTON);
+                button = Input.GetKey(JOYSTCIK_2_B_BUTTON);
                 break;
             case AkiraInputModel.Keyboard:
-                button = Input.GetKeyDown(KEYBOARD_B_BUTTON);
+                button = Input.GetKey(KEYBOARD_B_BUTTON);
                 break;
         }
         return button;

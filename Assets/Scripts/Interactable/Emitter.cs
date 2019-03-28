@@ -20,7 +20,7 @@ public abstract class Emitter : Interactable
     private Color rayColor;
     private ReflectivePiece piece;
 
-    private void Start()
+    protected virtual void Start()
     {
         beaconPointer = GameObject.CreatePrimitive(PrimitiveType.Sphere).transform;
         beaconPointer.localScale = new Vector3(.3f, .3f, .3f);
@@ -115,6 +115,17 @@ public abstract class Emitter : Interactable
     protected bool IsEmittingLight()
     {
         return isEmittingLight;
+    }
+
+    protected void SetRayCastAngle(float angle)
+    {
+        angle = angle % 360;
+        rayCastAngle = angle;
+    }
+
+    protected float GetRayCastAngle()
+    {
+        return rayCastAngle;
     }
 
     protected override void OnDrawGizmosSelected()

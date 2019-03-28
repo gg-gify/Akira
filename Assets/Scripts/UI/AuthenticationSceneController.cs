@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class AuthenticationSceneConttroler : MonoBehaviour
+public class AuthenticationSceneController : MonoBehaviour
 {
 
     [SerializeField] private InputField inputField;
 
     public void Authenticate()
     {
-        SceneManager.LoadScene("ChoseCharactes");
+        SceneManager.LoadScene("ControllerScene");
     }
 }

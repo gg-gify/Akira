@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public abstract class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    private const float WALK_ANIMATION_TIME = 0.88f;
+    private const float WALK_ANIMATION_TIME = 0.7f;
 
-    [SerializeField] PlayerType playerType = PlayerType.SmallPlayer;
     [SerializeField] AkiraInputModel inputModel = AkiraInputModel.Keyboard;
+    [SerializeField] private Transform hammerLightPivot;
 
     private Interactable interaction;
     private Animator playerAnim;
     private bool isWalking;
+    private LightSource holdingLight;
 
     private void Start()
     {
@@ -65,7 +66,14 @@ public abstract class PlayerController : MonoBehaviour
         isWalking = false;
     }
 
-    public abstract void BButtonPressed();
+    public void BButtonPressed()
+    {
+        if (holdingLight != null)
+        {
+            holdingLight.SetTarget(null);
+            holdingLight = null;
+        }
+    }
 
     public Interactable GetInteraction()
     {
@@ -76,9 +84,17 @@ public abstract class PlayerController : MonoBehaviour
     {
         this.interaction = interaction;
     }
-
-    public PlayerType GetPlayerType()
+    
+    public LightSource GetHoldingLight()
     {
-        return playerType;
+        return holdingLight;
     }
+
+    public void SetHoldingLight(LightSource holdingLight)
+    {
+        this.holdingLight = holdingLight;
+        if (holdingLight != null)
+            holdingLight.SetTarget(hammerLightPivot);
+    }
+
 }
