@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private const float WALK_ANIMATION_TIME = 0.7f;
 
-    [SerializeField] AkiraInputModel inputModel = AkiraInputModel.Keyboard;
+    [SerializeField] AkiraInput input;
     [SerializeField] private Transform hammerLightPivot;
 
     private Interactable interaction;
@@ -18,17 +18,18 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        input = new KeyboardAkiraInput();
         playerAnim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
-        PadKeyPressed(AkiraInput.GetPad(inputModel));
-        if (interaction != null && AkiraInput.GetButtonA(inputModel) && !isWalking)
+        PadKeyPressed(input.GetPad());
+        if (interaction != null && input.GetButtonA() && !isWalking)
         {
             interaction.AButtonPressed(this);
         }
-        if (AkiraInput.GetButtonB(inputModel) && !isWalking)
+        if (input.GetButtonB() && !isWalking)
         {
             BButtonPressed();
         }
