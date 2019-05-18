@@ -8,17 +8,17 @@ public class PlayerController : MonoBehaviour
 {
     private const float WALK_ANIMATION_TIME = 0.7f;
 
-    [SerializeField] AkiraInput input;
     [SerializeField] private Transform hammerLightPivot;
 
     private Interactable interaction;
     private Animator playerAnim;
     private bool isWalking;
     private LightSource holdingLight;
+    private MultiplayerAkiraInput input;
 
     private void Start()
     {
-        input = new KeyboardAkiraInput();
+        input = new MultiplayerAkiraInput();
         playerAnim = GetComponentInChildren<Animator>();
     }
 
@@ -95,7 +95,13 @@ public class PlayerController : MonoBehaviour
     {
         this.holdingLight = holdingLight;
         if (holdingLight != null)
+        {
             holdingLight.SetTarget(hammerLightPivot);
+        }
     }
 
+    public MultiplayerAkiraInput GetInput()
+    {
+        return input;
+    }
 }

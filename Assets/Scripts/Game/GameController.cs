@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public const int SCORE_DECAY_PER_SECOND = 2;
     public const float PORTAL_TEXT_FLASH_TIME = 0.4f;
 
+    [SerializeField] private PlayerController player1;
+    [SerializeField] private PlayerController player2;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text remainingCrystalsText;
     [SerializeField] private Text currentCrystalsText;
@@ -69,5 +71,15 @@ public class GameController : MonoBehaviour
         }
         portalOpennedText.gameObject.SetActive(false);
         isPostalTextAnimating = false;
+    }
+
+    public PlayerController GetPlayer1()
+    {
+        return player1;
+    }
+
+    public PlayerController GetPlayer2()
+    {
+        return player2;
     }
 }

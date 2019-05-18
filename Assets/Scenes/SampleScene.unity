@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44050232, g: 0.48911065, b: 0.569261, a: 1}
+  m_IndirectSpecularColor: {r: 0.4405022, g: 0.48911065, b: 0.56926084, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5289,18 +5289,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: ef802b793840763429134f92c83e13bc, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 419f5a869b7132f4291b91a101805be8, type: 2}
-    - target: {fileID: 13700000, guid: ef802b793840763429134f92c83e13bc, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 79d968d81513dd040a653e34f6e15236, type: 2}
-    - target: {fileID: 13700000, guid: ef802b793840763429134f92c83e13bc, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f25fee5541a39df45ae8f370672c3c1e, type: 2}
     - target: {fileID: 400008, guid: ef802b793840763429134f92c83e13bc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -5350,6 +5338,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 79d968d81513dd040a653e34f6e15236, type: 2}
     - target: {fileID: 2300002, guid: ef802b793840763429134f92c83e13bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f25fee5541a39df45ae8f370672c3c1e, type: 2}
+    - target: {fileID: 9500000, guid: ef802b793840763429134f92c83e13bc, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 419f5a869b7132f4291b91a101805be8, type: 2}
+    - target: {fileID: 13700000, guid: ef802b793840763429134f92c83e13bc, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79d968d81513dd040a653e34f6e15236, type: 2}
+    - target: {fileID: 13700000, guid: ef802b793840763429134f92c83e13bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f25fee5541a39df45ae8f370672c3c1e, type: 2}
@@ -6659,7 +6659,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b4dbf86ca66024f86af5284226bc37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputModel: 0
   hammerLightPivot: {fileID: 1141181200}
 --- !u!4 &1579133859
 Transform:
@@ -6996,7 +6995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b4dbf86ca66024f86af5284226bc37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputModel: 2
   hammerLightPivot: {fileID: 1517260740}
 --- !u!4 &1756966071
 Transform:
@@ -7188,6 +7186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1900240384}
   - component: {fileID: 1900240383}
+  - component: {fileID: 1900240385}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -7207,6 +7206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8ded9daac5fd940bab458a9b236e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 1756966070}
+  player2: {fileID: 1579133858}
   scoreText: {fileID: 1677217284}
   remainingCrystalsText: {fileID: 759793154}
   currentCrystalsText: {fileID: 1010496221}
@@ -7225,6 +7226,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1900240385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900240382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7401a6233fbe66143b90efcb8e409034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1913720323
 GameObject:
   m_ObjectHideFlags: 0
