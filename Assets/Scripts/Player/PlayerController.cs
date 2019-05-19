@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         input = new MultiplayerAkiraInput();
         playerAnim = GetComponentInChildren<Animator>();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()

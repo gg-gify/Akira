@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public const int SCORE_DECAY_PER_SECOND = 2;
     public const float PORTAL_TEXT_FLASH_TIME = 0.4f;
 
+    [Header("Game Configurations")]
     [SerializeField] private PlayerController player1;
     [SerializeField] private PlayerController player2;
     [SerializeField] private Text scoreText;
@@ -24,6 +25,7 @@ public class GameController : MonoBehaviour
     {
         currentScore = BEGIN_SCORE;
         crystals = FindObjectsOfType<Crystal>();
+        DontDestroyOnLoad(this);
     }
 
     private void Update()
