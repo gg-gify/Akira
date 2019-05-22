@@ -7,6 +7,10 @@ using UnityEngine.Networking.NetworkSystem;
 
 public class ClientScript : MonoBehaviour
 {
+    private GameObject menuPanel;
+    private GameObject controllePanel;
+
+    [Header("Controller")]
     [SerializeField] private AkiraButton upPad;
     [SerializeField] private AkiraButton downPad;
     [SerializeField] private AkiraButton leftPad;
@@ -17,6 +21,9 @@ public class ClientScript : MonoBehaviour
     [SerializeField] private AkiraButton buttonPerfil;
     [SerializeField] private Text debugText;
 
+    [Header("Authentication")]
+    [SerializeField] private InputField inputField;
+
     static NetworkClient client;
     
     void Start()
@@ -24,9 +31,13 @@ public class ClientScript : MonoBehaviour
         client = new NetworkClient();
     }
 
-    public void Connect()
+    public void Authentication()
     {
-        client.Connect("192.168.0.105", 7000);
+        ServerScriptData data = ServerScript.GetServerData(inputField.text);
+        if (data != null)
+        {
+            client.Connect(data.ip, 7000);
+        }
     }
 
     private void Update()

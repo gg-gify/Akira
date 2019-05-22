@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(GameController))]
 public class GameMenuController : MonoBehaviour
 {
     [SerializeField] private Button playButton;
@@ -14,11 +13,13 @@ public class GameMenuController : MonoBehaviour
 
     private bool player1Connected;
     private bool player2Connected;
+    private ServerScript serverScript;
 
     private void Start()
     {
         player1IpText.text = ServerScript.GetPlayerHexIP(1);
-        player1IpText.text = ServerScript.GetPlayerHexIP(2);
+        player2IpText.text = ServerScript.GetPlayerHexIP(2);
+        serverScript = GetComponent<ServerScript>();
     }
 
     private void Update()
